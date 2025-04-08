@@ -1,4 +1,4 @@
-#include <iostream>
+ #include <iostream>
 using namespace std;
 
 // definicao de tipo
@@ -88,7 +88,7 @@ void inicializar()
 	primeiro = NULL;
 	ultimo = NULL;
 	cout << "Lista inicializada \n";
-
+	return;
 }
 
 void exibirQuantidadeElementos() {
@@ -100,7 +100,7 @@ void exibirQuantidadeElementos() {
 		aux = aux->prox;
 	}
 	cout << "Quantidade de elementos: " << nElementos << endl;
-
+	return;
 }
 
 void exibirElementos()
@@ -150,19 +150,66 @@ void inserirElemento()
 // funções a serem implementadas no exericio
 void exibirReverso()
 {
+	if (ultimo == NULL) {
+		cout << "Lista vazia \n";
+		return;
+	}
+	cout << "Elementos na ordem reversa: \n";
+	NO* aux = ultimo; 
 
+	while (aux != NULL) {
+		cout << aux->valor << endl;
+		aux = aux->ant;
+	}
 }
 
 void excluirPrimeiroElemento()
 {
+	if (primeiro == NULL) {
+		cout << "Lista vazia \n";
+		return;
+	}
 
+	NO* paraExcluir = primeiro;
+
+	//  se existir apenas 1 elemento
+	if (primeiro == ultimo) {
+		primeiro = NULL;
+		ultimo = NULL;
+	}
+	else {
+		primeiro = primeiro->prox;
+		primeiro->ant = NULL;
+	}
+
+	free(paraExcluir);
+	cout << "Primeiro elemento excluido \n" << endl;
+	return;
 }
 
 void excluirUltimoElemento()
 {
+	if (ultimo == NULL) {
+		cout << "Lista vazia \n";
+		return;
+	}
 
+	NO* paraExcluir = ultimo;
+
+	// se existir apenas 1 elemento
+	if (primeiro == ultimo) {
+		primeiro = NULL;
+		ultimo = NULL;
+	}
+	else {
+		ultimo = ultimo->ant;
+		ultimo->prox = NULL;
+	}
+
+	free(paraExcluir);
+	cout << "Ultimo elemento excluido \n";
+	return;
 }
-
 
 
 
